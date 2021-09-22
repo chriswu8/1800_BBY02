@@ -6,7 +6,7 @@
 
 ## General Info
 This browser based web application to 
-* Hi my name is Curtis. I'm excited about this project.
+* Hi my name is Curtis. I'm super excited about this project.
 * help students more effectively get the resources they need
 
 
