@@ -6,7 +6,13 @@
 
 ## General Info
 This browser based web application to ...
+<<<<<<< HEAD
 * Hi my name is Curtis. I'm excited about this project.
+=======
+- help students more effectively get the resources they need
+- 
+- 
+>>>>>>> 02b4041 (Added one line under the General Info heading)
 	
 ## Technologies
 Technologies used for this project:
