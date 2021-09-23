@@ -9,6 +9,8 @@ This browser based web application to:
 * Help students (or people in general) get the resources they need more effectively.
 * Gamify the act of helping others
 * Hi my name is Curtis. I'm excited about this project.
+* Hi my name is JIahuanQi. I'm excited about this project too.
+
 
 
 ## Technologies
