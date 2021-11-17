@@ -149,7 +149,7 @@
             },
             // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
             signInFlow: 'popup',
-            signInSuccessUrl: 'Home Page.html',
+            signInSuccessUrl: 'postDetails.html',
             signInOptions: [
                 // Leave the lines as is for the providers you want to offer your users.
                 //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -167,6 +167,22 @@
 
         // The start method will wait until the DOM is loaded.
         ui.start('#firebaseui-auth-container', uiConfig);
+
+        function writeUserPost() {
+                //define a variable for the collection you want to create in Firestore to populate data
+                var userPost = db.collection("userPost");
+
+                userPost.add({
+                    Description: "looking to play a quick game against another team of 3",
+                    day: "22",    
+                    hour: "20",
+                    minute: "30",
+                    month: "11",
+                    title: "Basketball game (3v3)"
+                });
+            }
+        writeUserPost();
+
     </script>
 
 </body>
