@@ -201,7 +201,7 @@
             let Description = document.getElementById("descriptionInput").value;
             let Location = document.getElementById("locationInput").value;
 
-            firebase.auth().onAuthStateChanged(user => {   // find out  who's currently logged
+            firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
                 if (user) {
                     var currentUser = db.collection("users").doc(user.uid)
                     var userID = user.uid;
@@ -214,7 +214,7 @@
                             db.collection("posts").add({
                                 Code: postID,
                                 UserID: userID,
-                                // UserEmail: userEmail,
+                                UserEmail: userEmail,
                                 Title: Title,
                                 Description: Description,
                                 Location: Location
