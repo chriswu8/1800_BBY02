@@ -11,7 +11,6 @@
             color: white;
             overflow-y: hidden;
         }
-
         h1 {
             text-align: center;
             color: #FFFFFF;
@@ -114,13 +113,11 @@
                 <input type="text" id="titleInput" class="form-control">
             </div>
             <br>
-
             <div class="form-group">
                 <label style="color: white">Location</label>
                 <input type="text" id="locationInput" class="form-control" >
             </div>
             <br>
-
             <div class="form-group">
                 <label style="color: white">Description</label>
                 <textarea type="text" class="form-control" id="descriptionInput" rows="3"> </textarea>
@@ -211,7 +208,7 @@
                             //get user Email
                             var userEmail = userDoc.data().email;
                             // Start a new collection and add all data in it.
-                            db.collection("posts").add({
+                            db.collection("Posts").add({
                                 Code: postID,
                                 UserID: userID,
                                 UserEmail: userEmail,
@@ -241,7 +238,6 @@
             userTitle = document.getElementById('titleInput').value;       // get the value of the field with id="nameInput"
             userLocation = document.getElementById('locationInput').value;   // get the value of the field with id="schoolInput"
             userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="cityInput"
-
             currentUser.update({
                 title: userTitle,
                 location: userLocation,
