@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Home Page</title>
+    <title>Login</title>
 
     <meta name="comp1800 boilerplate code" content="">
-    <meta name="author" content="Curtis">
+    <meta name="author" content="BBY02">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -60,10 +60,10 @@
             height: 8vh;
         }
 
-        .mb-0 {
-            font-size: 3rem;
+        .welcomeBack {
+            font-size: 65px;
             font-weight: bold;
-            color:black;
+            color:white;
             padding-top: 4rem;
         }
 
@@ -84,9 +84,7 @@
 
         <div class="container">
             <blockquote class="blockquote text-center">
-                <p class="mb-0">Welcome to BBY02 APP! 
-                    Let's Login
-                </p>
+                <p class="welcomeBack">Welcome back to Time2Meet </p>
               </blockquote>
         </div>
         <br>
@@ -124,6 +122,7 @@
 
 
     
+
 <script>
     // Initialize the FirebaseUI Widget using Firebase.
     var ui = new firebaseui.auth.AuthUI(firebase.auth());
@@ -133,63 +132,54 @@
                 // User successfully signed in.
                 // Return type determines whether we continue the redirect automatically
                 // or whether we leave that to developer to handle.
+                //------------------------------------------------------------------------------------------
+                // The code below is modified from default snippet provided by the FB documentation.
+                //
+                // If the user is a "brand new" user, then create a new "user" in your own database.
+                // Assign this user with the name and email provided.
+                // Before this works, you must enable "Firestore" from the firebase console.
+                // The Firestore rules must allow the user to write. 
+                //------------------------------------------------------------------------------------------
                 var user = authResult.user;
 
-                // determines whether the user is a new user or not
-                if (authResult.additionalUserInfo.isNewUser) {
-                    db.collection("users").doc(user.uid).set({
-                        name: user.displayName,
-                        email: user.email
-                    }).then(function () {
-                        window.location.assign("Home Page.html");
-                    })
-                        .catch(function (error) {
-                            console.log("error is" + error);
+                if (authResult.additionalUserInfo.isNewUser) { //if new user
+                    db.collection("users").doc(user.uid).set({ //write to firestore
+                            name: user.displayName, //"users" collection
+                            email: user.email //with authenticated user's ID (user.uid)
+                        }).then(function () {
+                            console.log("New user added to firestore");
+                            window.location.assign("main.html"); //re-direct to main.html after signup
                         })
-
+                        .catch(function (error) {
+                            console.log("Error adding new user: " + error);
+                        });
                 } else {
                     return true;
-
                 }
                 return false;
             },
-            // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
-            signInFlow: 'popup',
-            signInSuccessUrl: 'postDetails.html',
-            signInOptions: [
-                // Leave the lines as is for the providers you want to offer your users.
-                //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-                //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-                //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-                firebase.auth.EmailAuthProvider.PROVIDER_ID,
-                //firebase.auth.PhoneAuthProvider.PROVIDER_ID
-            ],
-            // Terms of service url.
-            tosUrl: '<your-tos-url>',
-            // Privacy policy url.
-            privacyPolicyUrl: '<your-privacy-policy-url>'
-        };
-
-        // The start method will wait until the DOM is loaded.
-        ui.start('#firebaseui-auth-container', uiConfig);
-
-        function writeUserPost() {
-                //define a variable for the collection you want to create in Firestore to populate data
-                var userPost = db.collection("userPost");
-
-                userPost.add({
-                    Description: "looking to play a quick game against another team of 3",
-                    day: "22",    
-                    hour: "20",
-                    minute: "30",
-                    month: "11",
-                    title: "Basketball game (3v3)"
-                });
+            uiShown: function () {
+                // The widget is rendered.
+                // Hide the loader.
+                document.getElementById('loader').style.display = 'none';
             }
-        writeUserPost();
+        },
+        // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
+        signInFlow: 'popup',
+        signInSuccessUrl: 'main.html',
+        signInOptions: [
+            
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
+        ],
+        // Terms of service url.
+        tosUrl: '<your-tos-url>',
+        // Privacy policy url.
+        privacyPolicyUrl: '<your-privacy-policy-url>'
+    };
 
-    </script>
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+</script>
 
 </body>
 
