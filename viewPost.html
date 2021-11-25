@@ -142,9 +142,9 @@
             <i class="material-icons">home</i>
         </a>
         <i class="material-icons">info</i>
-        <a href="missionBoard.html">
-            <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
-        </a>
+        <i class="material-icons"><span class="material-icons-two-tone">
+                volunteer_activism
+            </span></i>
         <i class="material-icons">settings</i>
     </footer>
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
@@ -172,31 +172,27 @@
         let postID = localStorage.getItem("postID");
 
 
+        db.collection("Posts").where("code", "==", postID)
+            .get()
+            .then(queryPost => {
+                //see how many results you have got from the query
+                size = queryPost.size;
+                // get the documents of query
+                Posts = queryPost.docs;
 
-
-        // this chunk of code is for reading on the mission board page
-
-        // db.collection("Posts").where("code", "==", postID)
-        //     .get()
-        //     .then(queryPost => {
-        //         //see how many results you have got from the query
-        //         size = queryPost.size;
-        //         // get the documents of query
-        //         Posts = queryPost.docs;
-
-        //         // We want to have one document per post, so if the the result of 
-        //         //the query is more than one, we can check it right now and clean the DB if needed.
-        //         if (size = 1) {
-        //             var thisPost = Posts[0].data();
-        //             title = thisPost.title;
-        //             document.getElementById("PT").innerHTML = title;
-        //         } else {
-        //             console.log("Query has more than one data")
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log("Error getting documents: ", error);
-        //     });
+                // We want to have one document per post, so if the the result of 
+                //the query is more than one, we can check it right now and clean the DB if needed.
+                if (size = 1) {
+                    var thisPost = Posts[0].data();
+                    title = thisPost.title;
+                    document.getElementById("PT").innerHTML = title;
+                } else {
+                    console.log("Query has more than one data")
+                }
+            })
+            .catch((error) => {
+                console.log("Error getting documents: ", error);
+            });
 
 
 
@@ -208,7 +204,7 @@
 
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
                 if (user) {
-                    var currentUser = db.collection("users").doc(user.uid);
+                    var currentUser = db.collection("users").doc(user.uid)
                     var userID = user.uid;
                     //get the document for current user.
                     currentUser.get()
@@ -216,7 +212,7 @@
                             //get user Email
                             var userEmail = userDoc.data().email;
                             // Start a new collection and add all data in it.
-                            db.collection("posts").add({
+                            db.collection("Posts").add({
                                 Code: postID,
                                 UserID: userID,
                                 UserEmail: userEmail,
@@ -243,22 +239,17 @@
 
 
         function saveUserInfo() {
-            firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
-                if (user) {
-            console.log(user.uid);  
-            let currentPost = db.collection("posts").doc(user.uid);
             userTitle = document.getElementById('titleInput').value;       // get the value of the field with id="nameInput"
             userLocation = document.getElementById('locationInput').value;   // get the value of the field with id="schoolInput"
             userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="cityInput"
-            currentPost.set({
+            currentUser.update({
                 title: userTitle,
                 location: userLocation,
                 description: userDescription
             })
                 .then(() => {
-                    console.log("Document successfully updated!");});
-                }})
-            
+                    console.log("Document successfully updated!");
+                })
 
 
             // Make the form disabled after the "Save" button is clicked
