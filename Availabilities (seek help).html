@@ -79,6 +79,10 @@
             background-color: white
         }
 
+        #buttons {
+            margin-top: 600px;
+        }
+
         .pset {
             font-size: 20px;
             text-align: center;
@@ -265,18 +269,20 @@
         </table>
 
 
+        <div id="buttons">
 
-        <a href="postDetails.html">
-            <button id="button1" type="button" class="btn btn-outline-dark">
-                <p class="pset"><b>Back</b></p>
-            </button>
-        </a>
+            <a href="postDetails.html">
+                <button id="button1" type="button" class="btn btn-outline-dark">
+                    <p class="pset"><b>Back</b></p>
+                </button>
+            </a>
 
-        <a href="missionPosted.html">
-            <button id="button2" type="button" class="btn btn-outline-dark">
-                <p class="pset"><b>Post</b></p>
-            </button>
-        </a>
+            <a href="missionPosted.html">
+                <button id="button2" type="button" class="btn btn-outline-dark">
+                    <p class="pset"><b>Post</b></p>
+                </button>
+            </a>
+        </div>
 
 
         <br>
@@ -308,8 +314,7 @@
 
 
 
-//document.getElementsByClassName(isHighlighted)
-
+        //document.getElementsByClassName(isHighlighted)
 
 
         $(function () {
@@ -320,7 +325,6 @@
                     isMouseDown = true;
                     $(this).toggleClass("highlighted");
                     isHighlighted = $(this).hasClass("highlighted");
-                    // saveSlot("830")
 
                     return false; // prevent text selection
                 })
