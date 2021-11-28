@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <style>
+        body {
+            background: linear-gradient(#0f2027, #203a43, #2c5364);
+            width: 100%;
+            height: auto;
+            color: white;
+            overflow-y: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            color: #FFFFFF;
+            text-shadow: 0px 0px 7px;
+            font-size: 2vw;
+            text-shadow: 0 0 4px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #18f0ff, 0 0 30px #53ece0, 0 0 40px #9aff7e, 0 0 55px #49FF18, 0 0 75px #49ff18;
+        }
+
+        form {
+            width: 80%;
+            margin: 100px;
+            font-size: 30px;
+        }
+
+        label {
+
+            color: #FFFFFF;
+            text-shadow: 0px 0px 7px;
+            font-size: 35px;
+            text-shadow: 0 0 4px #FFF,  #1f7d84, 0 0 30px #69a7a2, 0 0 40px #878685, 0 0 55px;
+            text-decoration: underline;
+
+        }
+
+        .missionTitle {
+            text-align: center;
+            text-shadow: 0 0 4px #FFF, 0 0 10px #1f7d84, 0 0 30px #69a7a2, 0 0 40px #75b065, 0 0 55px;
+
+        }
+
+        input {
+            margin: 0px;
+        }
+
+        footer {
+            background-color: #BBB;
+            height: 8vh;
+        }
+    </style>
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 template" content="MissionDetails">
+
+    <!-- Optional styles and scripts of your own -->
+    <link type="text/css" href="styles/my_style.css">
+
+    <!-- Bootstrap FirebaseUI CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Firebase 8 CDNs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Google Icons (Material Design)-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Link to the api keys for your firebase project -->
+    <script src="./scripts/firebaseAPI_TEAMBBY02.js"></script>
+
+</head>
+
+<body>
+
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+
+    <br> <br>
+
+    <h1>Mission Details<span id="PT"></span></h1>
+
+
+    <form>
+        <fieldset class="mb-3" id="personalInfoFields">
+            <div class="missionTitle" style="color: white" >
+                <!-- CONTENT GOES HERE -->
+
+                Anyone want to study for Web Dev Final?
+
+            </div>
+            <br>
+            <div class="form-group" style="color: white">
+                <label style="color: white">Mission Location</label>
+                <!-- CONTENT GOES HERE -->
+                <br>
+                BCIT SE14 Library 1st floor room 101
+            </div>
+            <br>
+            <div class="form-group" style="color: white">
+                <label style="color: white">Mission Description</label>
+                <!-- CONTENT GOES HERE -->
+                <br>
+                Hi everyone,
+                I know a lot of people are worried about the upcoming web dev exam.
+                I was thinking of the forming a study group so we could help each other.
+                My availability is shown, let me know if you're interested.
+
+
+            </div><br>
+        </fieldset>
+
+
+        <br>
+        <div class="d-flex justify-content-end">
+            <a href="missionBoard.html">
+                <button type="button" class="btn btn-lg btn-primary pull-right" onclick="saveUserInfo()">Back </button>
+            </a>
+            &nbsp; &nbsp;
+            <a href="missionAccepted.html">
+                <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writePost()">Schedule </button>
+            </a>
+        </div>
+    </form>
+
+
+
+    <footer class="navbar justify-content-evenly fixed-bottom">
+        <a href="main.html">
+            <i class="material-icons">home</i>
+        </a>
+        <i class="material-icons">info</i>
+        <a href="missionBoard.html">
+            <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
+        </a>
+        <i class="material-icons">settings</i>
+    </footer>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+
+    <!--------------------------------------------------------------------->
+    <!-- JS files: Your own JavaScript functions included here    -->
+    <!--------------------------------------------------------------------->
+
+    <script>
+
+        let postID = localStorage.getItem("postID");
+
+
+
+
+        // this chunk of code is for reading on the mission board page
+
+        // db.collection("Posts").where("code", "==", postID)
+        //     .get()
+        //     .then(queryPost => {
+        //         //see how many results you have got from the query
+        //         size = queryPost.size;
+        //         // get the documents of query
+        //         Posts = queryPost.docs;
+
+        //         // We want to have one document per post, so if the the result of 
+        //         //the query is more than one, we can check it right now and clean the DB if needed.
+        //         if (size = 1) {
+        //             var thisPost = Posts[0].data();
+        //             title = thisPost.title;
+        //             document.getElementById("PT").innerHTML = title;
+        //         } else {
+        //             console.log("Query has more than one data")
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.log("Error getting documents: ", error);
+        //     });
+
+
+
+        function writePost() {
+
+            let Title = document.getElementById("titleInput").value;
+            let Description = document.getElementById("descriptionInput").value;
+            let Location = document.getElementById("locationInput").value;
+            //let Availabilities = document.getElementById("availabilityInput").value;
+
+            firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
+                if (user) {
+                    var currentUser = db.collection("users").doc(user.uid);
+                    var userID = user.uid;
+                    //get the document for current user.
+                    currentUser.get()
+                        .then(userDoc => {
+                            //get user Email
+                            var userEmail = userDoc.data().email;
+                            // Start a new collection and add all data in it.
+                            db.collection("posts").add({
+                                Code: postID,
+                                UserID: userID,
+                                UserEmail: userEmail,
+                                Title: Title,
+                                Description: Description,
+                                Location: Location
+                            });
+                        })
+                } else {
+                    // No user is signed in.
+                    console.log("no user signed in");
+                }
+            });
+        }
+
+
+
+        function editUserInfo() {
+            //Enable the form fields
+            document.getElementById('personalInfoFields').disabled = false;
+        }
+
+
+
+
+        function saveUserInfo() {
+            firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
+                if (user) {
+                    console.log(user.uid);
+                    let currentPost = db.collection("posts").doc(user.uid);
+                    userTitle = document.getElementById('titleInput').value;                   // get the value of the field with id="titleInput"
+                    userLocation = document.getElementById('locationInput').value;             // get the value of the field with id="locationInput"
+                    userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="descriptionInput"
+                    //userAvailability = document.getElementById('availabilityInput').value;     // get the value of the field with id="availabilityInput"
+                    currentPost.set({
+                        title: userTitle,
+                        location: userLocation,
+                        description: userDescription,
+                        //availabilities: userAvailability
+
+                    })
+                        .then(() => {
+                            console.log("Document successfully updated!");
+                        });
+                }
+            })
+
+
+
+            // Make the form disabled after the "Save" button is clicked
+            document.getElementById('personalInfoFields').disabled = true;
+        }
+
+    </script>
+
+</body>
+
+</html>

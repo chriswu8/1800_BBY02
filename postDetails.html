@@ -67,44 +67,10 @@
     <!-------------------------------------->
     <!-- The following is HTML for layout -->
     <!-------------------------------------->
-    <!-- Navbar
-    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
-        <div class="container-fluid">
-            <a class="navbar-brand">Chris's Hiking App - Reviews</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="login.html">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Navigate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Saved</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="profile.html">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav> -->
-
-
 
     <br> <br><br> <br>
 
     <h1>Add New Post <span id="PT"></span></h1>
-
-
-
 
     <form>
         <fieldset class="mb-3" id="personalInfoFields">
@@ -205,6 +171,7 @@
             let Title = document.getElementById("titleInput").value;
             let Description = document.getElementById("descriptionInput").value;
             let Location = document.getElementById("locationInput").value;
+            //let Availabilities = document.getElementById("availabilityInput").value;
 
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
                 if (user) {
@@ -247,13 +214,16 @@
                 if (user) {
             console.log(user.uid);  
             let currentPost = db.collection("posts").doc(user.uid);
-            userTitle = document.getElementById('titleInput').value;       // get the value of the field with id="nameInput"
-            userLocation = document.getElementById('locationInput').value;   // get the value of the field with id="schoolInput"
-            userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="cityInput"
+            userTitle = document.getElementById('titleInput').value;                   // get the value of the field with id="titleInput"
+            userLocation = document.getElementById('locationInput').value;             // get the value of the field with id="locationInput"
+            userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="descriptionInput"
+            //userAvailability = document.getElementById('availabilityInput').value;     // get the value of the field with id="availabilityInput"
             currentPost.set({
                 title: userTitle,
                 location: userLocation,
-                description: userDescription
+                description: userDescription,
+                //availabilities: userAvailability
+            
             })
                 .then(() => {
                     console.log("Document successfully updated!");});
