@@ -11,6 +11,7 @@
             color: white;
             overflow-y: hidden;
         }
+
         h1 {
             text-align: center;
             color: #FFFFFF;
@@ -81,7 +82,7 @@
             <br>
             <div class="form-group">
                 <label style="color: white">Location</label>
-                <input type="text" id="locationInput" class="form-control" >
+                <input type="text" id="locationInput" class="form-control">
             </div>
             <br>
             <div class="form-group">
@@ -93,10 +94,19 @@
 
         <br>
         <div class="d-flex justify-content-end">
+            <a href="secondary.html">
+                <button type="button" class="btn btn-lg btn-primary pull-right">Back </button>
+            </a>
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
             <button type="button" class="btn btn-lg btn-primary pull-right" onclick="saveUserInfo()">Save </button>
             &nbsp; &nbsp;
             <a href="Availabilities (seek help).html">
-            <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writePost()">Next </button>
+                <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writePost()">Next </button>
             </a>
         </div>
     </form>
@@ -212,23 +222,25 @@
         function saveUserInfo() {
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
                 if (user) {
-            console.log(user.uid);  
-            let currentPost = db.collection("posts").doc(user.uid);
-            userTitle = document.getElementById('titleInput').value;                   // get the value of the field with id="titleInput"
-            userLocation = document.getElementById('locationInput').value;             // get the value of the field with id="locationInput"
-            userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="descriptionInput"
-            //userAvailability = document.getElementById('availabilityInput').value;     // get the value of the field with id="availabilityInput"
-            currentPost.set({
-                title: userTitle,
-                location: userLocation,
-                description: userDescription,
-                //availabilities: userAvailability
-            
+                    console.log(user.uid);
+                    let currentPost = db.collection("posts").doc(user.uid);
+                    userTitle = document.getElementById('titleInput').value;                   // get the value of the field with id="titleInput"
+                    userLocation = document.getElementById('locationInput').value;             // get the value of the field with id="locationInput"
+                    userDescription = document.getElementById('descriptionInput').value;       // get the value of the field with id="descriptionInput"
+                    //userAvailability = document.getElementById('availabilityInput').value;     // get the value of the field with id="availabilityInput"
+                    currentPost.set({
+                        title: userTitle,
+                        location: userLocation,
+                        description: userDescription,
+                        //availabilities: userAvailability
+
+                    })
+                        .then(() => {
+                            console.log("Document successfully updated!");
+                        });
+                }
             })
-                .then(() => {
-                    console.log("Document successfully updated!");});
-                }})
-            
+
 
 
             // Make the form disabled after the "Save" button is clicked
