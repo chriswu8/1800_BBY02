@@ -97,17 +97,17 @@
             <a href="secondary.html">
                 <button type="button" class="btn btn-lg btn-primary pull-right">Back </button>
             </a>
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             <button type="button" class="btn btn-lg btn-primary pull-right" onclick="saveUserInfo()">Save </button>
             &nbsp; &nbsp;
-            <a href="Availabilities (seek help).html">
-                <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writePost()">Next </button>
-            </a>
+
+            <button type="button" class="btn btn-lg btn-primary pull-right" onclick="writePost()">Next </button>
+
         </div>
     </form>
 
@@ -178,9 +178,9 @@
 
         function writePost() {
 
-            let Title = document.getElementById("titleInput").value;
-            let Description = document.getElementById("descriptionInput").value;
-            let Location = document.getElementById("locationInput").value;
+            // let Title = document.getElementById("titleInput").value;
+            // let Description = document.getElementById("descriptionInput").value;
+            // let Location = document.getElementById("locationInput").value;
             //let Availabilities = document.getElementById("availabilityInput").value;
 
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
@@ -191,15 +191,21 @@
                     currentUser.get()
                         .then(userDoc => {
                             //get user Email
-                            var userEmail = userDoc.data().email;
+                            //var userEmail = userDoc.data().email;
                             // Start a new collection and add all data in it.
+                            var Title = document.getElementById("titleInput").value;
+                            var Description = document.getElementById("descriptionInput").value;
+                            var Location = document.getElementById("locationInput").value;
+
                             db.collection("posts").add({
-                                Code: postID,
+                                //Code: postID,
                                 UserID: userID,
-                                UserEmail: userEmail,
+                                //UserEmail: userEmail,
                                 Title: Title,
                                 Description: Description,
                                 Location: Location
+                            }).then(doc => {
+                                window.location.href = "Availabilities (seek help).html?postid=" + doc.id; // redirects to next page with auto generated id from 196 
                             });
                         })
                 } else {

@@ -231,9 +231,12 @@
                 <button type="button" class="btn btn-lg btn-primary pull-right">Back </button>
             </a>
             &nbsp; &nbsp; &nbsp;
-            <a href="missionPosted.html">
+            <!-- <a href="missionPosted.html">
                 <button id="button" type="button" class="btn btn-lg btn-primary pull-right" onclick="saveToggles()"> Post  </button>
-            </a>
+            </a> -->
+
+            <button id="postButton" type="button" class="btn btn-lg btn-primary pull-right"> Post </button>
+
         </div>
 
 
@@ -296,20 +299,63 @@
 
 
 
-        function saveToggles(postid) {
+        // function saveToggles(postid) {
+        //     //get all the toggled divs into an array
+        //     var toggles = ["M800", "M900", "M1000", "W800", "W900", "W1000", "F800", "F900", "F1000"];
+        //     toggles.forEach(item => {
+        //         console.log(item);
+        //         db.collection("posts").doc(postid).set({
+        //             availability: firebase.firestore.FieldValue.arrayUnion(item)
+        //         }, { merge: true });
+        //     })
+        // }
+        // saveToggles("pmsMtRGt4BXHM764oqIjGzgd2PR2");
+
+        function saveToggles(postid, toggles) {
             //get all the toggled divs into an array
-            var toggles = ["M800", "M900", "M1000", "W800", "W900", "W1000", "F800", "F900", "F1000"];
-            toggles.forEach(item => {
+            //var toggles = ["M800", "M900", "M1000", "W800", "W900", "W1000", "F800", "F900", "F1000"];;   //get from input param
+
+            toggles.forEach(item => { // provided by addPostListener
                 console.log(item);
-                db.collection("posts").doc(postid).set({
-                    availability: firebase.firestore.FieldValue.arrayUnion(item)
-                }, { merge: true });
+                db.collection("posts").doc(postid).set({ // go to postid document in post collection and update the availabilities key value pair (array)
+                    availability : firebase.firestore.FieldValue.arrayUnion(item)    // add item (from toggles list in 318) to array
+                },{merge:true});
             })
         }
-        saveToggles("pmsMtRGt4BXHM764oqIjGzgd2PR2");
 
 
 
+
+        // function is always running
+        function addPostListener() {
+            document.getElementById("postButton").addEventListener("click", function () {
+
+
+                //var postid = "G4z0EXLAg0XaI93l5CiU";     //should get this from the URL param (?)
+                // create a URL object
+                let params = new URL(window.location.href); // grabs URL that got us here in the first place
+                let postid = params.searchParams.get("postid"); //parse "postid"
+
+                //get all the divs where class is "highligted"
+                //it should return a list of elements
+                var highlighted = document.getElementsByClassName("highlighted");
+                var list = [];
+                console.log(highlighted);
+
+                //loop thru these dom elements
+                for (x of highlighted) {
+                    //if the id is not empty string, add it to our list
+                    if (x.id != "")
+                        list.push(x.id);  //the id's use slot names
+                }
+
+                //pass the list of slots to be saved
+                //pass in the postid as well, so we know which doc to save it in
+                console.log(list);    //list of slot names 
+                saveToggles(postid, list);   //pass list of toggles
+            })
+        }
+        addPostListener();
 
     </script>
 
