@@ -234,9 +234,9 @@
             <!-- <a href="missionPosted.html">
                 <button id="button" type="button" class="btn btn-lg btn-primary pull-right" onclick="saveToggles()"> Post  </button>
             </a> -->
-
+            
             <button id="postButton" type="button" class="btn btn-lg btn-primary pull-right"> Post </button>
-
+            
         </div>
 
 
@@ -318,9 +318,9 @@
             toggles.forEach(item => { // provided by addPostListener
                 console.log(item);
                 db.collection("posts").doc(postid).set({ // go to postid document in post collection and update the availabilities key value pair (array)
-                    availability : firebase.firestore.FieldValue.arrayUnion(item)    // add item (from toggles list in 318) to array
-                },{merge:true});
-            })
+                    availability: firebase.firestore.FieldValue.arrayUnion(item)    // add item (from toggles list in 318) to array
+                }, { merge: true });
+            }) 
         }
 
 
