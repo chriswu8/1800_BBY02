@@ -36,7 +36,7 @@
     </style>
     <meta charset="utf-8">
     <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="Post">
+    <meta name="comp1800 BBY-02" content="Post Details page">
 
     <!-- Optional styles and scripts of your own -->
     <link type="text/css" href="styles/my_style.css">
@@ -121,23 +121,10 @@
         <a href="missionBoard.html">
             <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
         </a>
-        <i class="material-icons">settings</i>
+        <a href="profile.html">
+            <i class="material-icons">account_circle</i>
+        </a>
     </footer>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
-    <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
 
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
@@ -178,11 +165,6 @@
 
         function writePost() {
 
-            // let Title = document.getElementById("titleInput").value;
-            // let Description = document.getElementById("descriptionInput").value;
-            // let Location = document.getElementById("locationInput").value;
-            //let Availabilities = document.getElementById("availabilityInput").value;
-
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
                 if (user) {
                     var currentUser = db.collection("users").doc(user.uid);
@@ -221,7 +203,6 @@
             //Enable the form fields
             document.getElementById('personalInfoFields').disabled = false;
         }
-
 
 
 

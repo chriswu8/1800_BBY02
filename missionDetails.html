@@ -2,6 +2,9 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 BBY-02" content="MissionDetails Page">
 
     <style>
         body {
@@ -9,7 +12,6 @@
             width: 100%;
             height: auto;
             color: white;
-            overflow-y: hidden;
         }
 
         h1 {
@@ -51,9 +53,6 @@
             height: 8vh;
         }
     </style>
-    <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 template" content="MissionDetails">
 
     <!-- Optional styles and scripts of your own -->
     <link type="text/css" href="styles/my_style.css">
@@ -147,8 +146,12 @@
         <a href="missionBoard.html">
             <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
         </a>
-        <i class="material-icons">settings</i>
+        <a href="profile.html">
+            <i class="material-icons">account_circle</i>
+        </a>
     </footer>
+
+    <!--extra break elements added to stop repeating background-colour gradient-->
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
     <br> <br> <br> <br> <br> <br> <br> <br> <br> <br>
@@ -171,36 +174,8 @@
 
     <script>
 
+        //code is not used on the page
         let postID = localStorage.getItem("postID");
-
-
-
-
-        // this chunk of code is for reading on the mission board page
-
-        // db.collection("Posts").where("code", "==", postID)
-        //     .get()
-        //     .then(queryPost => {
-        //         //see how many results you have got from the query
-        //         size = queryPost.size;
-        //         // get the documents of query
-        //         Posts = queryPost.docs;
-
-        //         // We want to have one document per post, so if the the result of 
-        //         //the query is more than one, we can check it right now and clean the DB if needed.
-        //         if (size = 1) {
-        //             var thisPost = Posts[0].data();
-        //             title = thisPost.title;
-        //             document.getElementById("PT").innerHTML = title;
-        //         } else {
-        //             console.log("Query has more than one data")
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.log("Error getting documents: ", error);
-        //     });
-
-
 
         function writePost() {
 
@@ -235,15 +210,10 @@
             });
         }
 
-
-
         function editUserInfo() {
             //Enable the form fields
             document.getElementById('personalInfoFields').disabled = false;
         }
-
-
-
 
         function saveUserInfo() {
             firebase.auth().onAuthStateChanged(user => {   // find out who's currently logged in
@@ -266,8 +236,6 @@
                         });
                 }
             })
-
-
 
             // Make the form disabled after the "Save" button is clicked
             document.getElementById('personalInfoFields').disabled = true;

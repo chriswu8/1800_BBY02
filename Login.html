@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title>Login</title>
 
-    <meta name="comp1800 boilerplate code" content="">
-    <meta name="author" content="BBY02">
+    <meta name="comp1800 BBY-02" content="Login page">
+    <meta name="Author" content="Curtis">
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -48,6 +48,7 @@
 
         body {
             background: linear-gradient(#0F2027, #203A43, #2C5364);
+            overflow-y: hidden;
         }
 
         .container h1 {
@@ -77,35 +78,40 @@
     <!------------------------------------>
 
     <div class="container">
-
         <br>
         <br>
-
-
         <div class="container">
             <blockquote class="blockquote text-center">
                 <p class="welcomeBack">Welcome back to Time2Meet </p>
               </blockquote>
         </div>
+
         <br>
         <br>
+
         <div id="firebaseui-auth-container"></div>
         <div id="loader">Loading...</div>
 
         <br>
 
         <footer class="navbar justify-content-evenly fixed-bottom">
-            <i class="material-icons">home</i>
+            <a href="main.html">
+                <i class="material-icons">home</i>
+            </a>
             <i class="material-icons">info</i>
-            <i class="material-icons"><span class="material-icons-two-tone">
-                    volunteer_activism
-                </span></i>
-            <i class="material-icons">settings</i>
+            <a href="missionBoard.html">
+                <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
+            </a>
+            <a href="profile.html">
+                <i class="material-icons">account_circle</i>
+            </a>
         </footer>
 
 
 
     </div>
+    
+    <!--extra break elements added to stop repeating background-colour gradient-->
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>

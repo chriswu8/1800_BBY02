@@ -12,10 +12,10 @@
     <meta charset="utf-8">
     <title>Home Page</title>
 
-    <!-- <meta name="comp1800 boilerplate code" content="Home Page">
+    <meta name="comp1800 BBY-02" content="Home Page">
     <meta name="author" content="Chris">
 
-    <!-- Required meta tags -->
+    <!--Required meta tags--> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,7 +25,7 @@
 
     <!-- Google Icons (Material Design)-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="./main.css" rel="stylesheet">
+    <link href="./styles/main.css" rel="stylesheet">
 
     <!-- Firebase 8 CDNs-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -120,18 +120,23 @@
         <br><br><br>
 
         <footer class="navbar justify-content-evenly fixed-bottom">
-            <i class="material-icons">home</i>
+            <a href="main.html">
+                <i class="material-icons">home</i>
+            </a>
             <i class="material-icons">info</i>
             <a href="missionBoard.html">
                 <i class="material-icons"><span class="material-icons-two-tone"> volunteer_activism </span> </i>
             </a>
-            <i class="material-icons">settings</i>
+            <a href="profile.html">
+                <i class="material-icons">account_circle</i>
+            </a>
         </footer>
 
 
 
     </div>
 
+    <!--extra break elements added to stop repeating background-colour gradient-->
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
     <br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br><br> <br> <br> <br>
@@ -140,7 +145,7 @@
     <!-- Your Javascript Libraries and scripts go here -->
     <!--------------------------------------------------->
     <script>
-        //function to insert name of the user
+        //function to insert name of the user for a greeting message
         function insertName() {
             firebase.auth().onAuthStateChanged(user => {
                 // Check if user is signed in:
@@ -173,8 +178,5 @@
         </script>
 
 </body>
-
-
-
 
 </html>
